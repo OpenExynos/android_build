@@ -23,15 +23,10 @@
 PRODUCT_PACKAGES += \
     BasicDreams \
     Browser \
-    Calendar \
     CalendarProvider \
     CaptivePortalLogin \
     CertInstaller \
-    Contacts \
-    DeskClock \
     DocumentsUI \
-    DownloadProviderUi \
-    Email \
     ExactCalculator \
     Exchange2 \
     ExternalStorageProvider \
@@ -40,7 +35,7 @@ PRODUCT_PACKAGES += \
     KeyChain \
     Keyguard \
     LatinIME \
-    Launcher2 \
+    Launcher3 \
     ManagedProvisioning \
     PicoTts \
     PacProcessor \
@@ -50,9 +45,17 @@ PRODUCT_PACKAGES += \
     QuickSearchBox \
     Settings \
     SharedStorageBackup \
-    Telecom \
     TeleService \
+    Telecom \
     VpnDialogs \
-    MmsService
+    E-Compass \
+    GPS \
+    G-Sensor \
+    PedometerSensor \
+    PressureSensor \
+    L-Sensor \
+    P-Sensor \
+    SoundRecorder \
+    Music
 
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_base.mk)

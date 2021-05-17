@@ -96,6 +96,11 @@ else ifeq ($(my_cxx_stl),none)
         my_ldflags += -nodefaultlibs
         my_ldlibs += $($(my_prefix)$(HOST_OS)_$(my_link_type)_gcclibs)
     endif
+else ifeq ($(my_cxx_stl),stlport)
+    ifndef LOCAL_IS_HOST_MODULE
+        my_c_includes += external/stlport/stlport bionic/libstdc++/include
+        my_system_shared_libraries += libstlport libstdc++
+    endif
 else
     $(error $(LOCAL_PATH): $(LOCAL_MODULE): $(my_cxx_stl) is not a supported STL.)
 endif

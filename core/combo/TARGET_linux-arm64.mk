@@ -143,7 +143,21 @@ TARGET_LIBGCOV := $(shell $(TARGET_CC) $(TARGET_GLOBAL_CFLAGS) \
 
 KERNEL_HEADERS_COMMON := $(libc_root)/kernel/uapi
 KERNEL_HEADERS_ARCH   := $(libc_root)/kernel/uapi/asm-$(TARGET_ARCH)
-KERNEL_HEADERS := $(KERNEL_HEADERS_COMMON) $(KERNEL_HEADERS_ARCH)
+KERNEL_HEADERS_VENDOR := $(TOPDIR)hardware/samsung_slsi/exynos/include
+
+ifneq ($(findstring 3.1, $(TARGET_LINUX_KERNEL_VERSION)), 3.1)
+ KERNEL_HEADERS_VENDOR += $(TOPDIR)hardware/samsung_slsi/exynos/kernel-3.4-headers
+endif
+
+ifeq ($(filter 3.10, $(TARGET_LINUX_KERNEL_VERSION)), 3.10)
+ KERNEL_HEADERS_VENDOR += $(TOPDIR)hardware/samsung_slsi/exynos/kernel-3.10-headers
+endif
+
+ifeq ($(filter 3.18, $(TARGET_LINUX_KERNEL_VERSION)), 3.18)
+ KERNEL_HEADERS_VENDOR += $(TOPDIR)hardware/samsung_slsi/exynos/kernel-3.18-headers
+endif
+
+KERNEL_HEADERS := $(KERNEL_HEADERS_COMMON) $(KERNEL_HEADERS_ARCH) $(KERNEL_HEADERS_VENDOR)
 
 TARGET_C_INCLUDES := \
 	$(libc_root)/arch-arm64/include \
